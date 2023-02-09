@@ -1,0 +1,28 @@
+package com.bridgelabz;
+
+import java.util.Hashtable;
+
+public class HashTable {
+    public static Hashtable<String, Integer> getWordFrequency(String sentence) {
+        Hashtable<String, Integer> wordFrequency = new Hashtable<String, Integer>();
+        String[] words = sentence.split(" ");
+        for (String word : words) {
+            word = word.toLowerCase();
+            if (wordFrequency.containsKey(word)) {
+                int count = wordFrequency.get(word);
+                wordFrequency.put(word, count + 1);
+            } else {
+                wordFrequency.put(word, 1);
+            }
+        }
+        return wordFrequency;
+    }
+    public static void main(String[] args) {
+        String sentence = "Paranoid are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+        Hashtable<String, Integer> wordFrequency = getWordFrequency(sentence);
+        for (String word : wordFrequency.keySet()) {
+            System.out.println(word + ": " + wordFrequency.get(word));
+        }
+    }
+
+}
